@@ -3,122 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JDE Solutions – Quote Request</title>
+  <title>JDE Solutions LLC</title>
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
-      padding: 2rem;
       background: #f5f5f5;
       color: #333;
     }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 2rem;
+    header {
       background: #0074d9;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 2rem 1rem;
+      text-align: center;
     }
-    .result {
-      margin-top: 2rem;
-      background: #e3f9e5;
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
       padding: 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #0074d9;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta a {
+      display: inline-block;
+      background: #0074d9;
+      color: white;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
       border-radius: 8px;
-      display: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+      font-size: 0.875rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>JDE Solutions LLC</h1>
+    <p>Consulting & Technical Solutions for Small Business</p>
+  </header>
+
   <div class="container">
-    <h1>Request a Quote – JDE Solutions</h1>
-    <form id="quoteForm">
-      <label>Full Name
-        <input type="text" name="name" required />
-      </label>
-      <label>Company
-        <input type="text" name="company" />
-      </label>
-      <label>Email
-        <input type="email" name="email" required />
-      </label>
-      <label>Service Category
-        <select name="category" id="category">
-          <option value="ops">Operational Management</option>
-          <option value="security">Security & Surveillance</option>
-          <option value="infra">Technical Infrastructure</option>
-          <option value="custombiz">Custom Business Solutions</option>
-          <option value="custom">Custom Solution</option>
-        </select>
-      </label>
-      <label>Estimated Hours
-        <input type="number" name="hours" id="hours" min="1" required />
-      </label>
-      <label>Hourly Rate (USD)
-        <input type="number" name="rate" id="rate" required />
-      </label>
-      <label>Project Description
-        <textarea name="description" rows="4"></textarea>
-      </label>
-      <button type="submit">Calculate Quote</button>
-    </form>
-    <div class="result" id="quoteResult"></div>
+    <h2>What We Do</h2>
+    <p>We help small businesses simplify complexity. From infrastructure to operations, we bring clarity and control to your technical and managerial challenges.</p>
+
+    <h2>Services Offered</h2>
+    <ul>
+      <li>Operational Management & Oversight</li>
+      <li>Security & Surveillance Systems</li>
+      <li>Technical Infrastructure (Networking, AV, Devices)</li>
+      <li>Custom Business Solutions (CRMs, Docs, Automations)</li>
+      <li>Custom Solutions – We solve the problems others can’t</li>
+    </ul>
+
+    <div class="cta">
+      <a href="quote.html">Request a Quote</a>
+    </div>
   </div>
 
-  <script>
-    const defaultRates = {
-      ops: 150,
-      security: 125,
-      infra: 135,
-      custombiz: 160,
-      custom: 145
-    };
-
-    document.getElementById('category').addEventListener('change', function() {
-      const selected = this.value;
-      document.getElementById('rate').value = defaultRates[selected];
-    });
-
-    document.getElementById('quoteForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const hours = parseFloat(document.getElementById('hours').value);
-      const rate = parseFloat(document.getElementById('rate').value);
-      const total = hours * rate;
-
-      const resultDiv = document.getElementById('quoteResult');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `
-        <strong>Estimated Quote:</strong><br/>
-        ${hours} hrs @ $${rate.toFixed(2)} = <strong>$${total.toFixed(2)}</strong>
-        <p>(This is an estimate. Final pricing will be confirmed before project start.)</p>
-      `;
-    });
-
-    // Trigger default rate on load
-    document.getElementById('rate').value = defaultRates['ops'];
-  </script>
+  <footer>
+    &copy; 2025 JDE Solutions LLC – Indianapolis, IN
+  </footer>
 </body>
 </html>

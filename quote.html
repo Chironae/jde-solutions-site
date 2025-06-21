@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JDE Solutions LLC</title>
+  <title>Request a Quote – JDE Solutions LLC</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="theme-color" content="#222f2e" />
 </head>
 <body>
   <header>
-  <h1>JDE Solutions LLC</h1>
-  <p>Consulting & Technical Solutions for Small Business</p>
-</header>
+    <h1>JDE Solutions LLC</h1>
+    <p>Consulting & Technical Solutions for Small Business</p>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="quote.html">Request a Quote</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="quote.html">Request a Quote</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
   <div class="container">
     <h1>Request a Quote – JDE Solutions</h1>
     <form id="quoteForm">
@@ -55,6 +56,10 @@
     <div class="result" id="quoteResult"></div>
   </div>
 
+  <footer>
+    &copy; 2025 JDE Solutions LLC
+  </footer>
+
   <script>
     const defaultRates = {
       ops: 150,
@@ -64,12 +69,12 @@
       custom: 145
     };
 
-    document.getElementById('category').addEventListener('change', function() {
+    document.getElementById('category').addEventListener('change', function () {
       const selected = this.value;
       document.getElementById('rate').value = defaultRates[selected];
     });
 
-    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const hours = parseFloat(document.getElementById('hours').value);
       const rate = parseFloat(document.getElementById('rate').value);

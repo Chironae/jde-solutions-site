@@ -1,12 +1,12 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  background: #f5f5f5;
-  color: #333;
+  background: #1e2524;
+  color: #eaeaea;
 }
 
 header {
-  background: #0074d9;
+  background: #2b3130;
   color: white;
   padding: 2rem 1rem;
   text-align: center;
@@ -18,28 +18,75 @@ header h1 {
 
 nav {
   text-align: center;
-  background: #005fa3;
+  background: #232928;
   padding: 0.5rem;
 }
 
 nav a {
-  color: white;
+  color: #7ac943;
   text-decoration: none;
   margin: 0 1rem;
   font-weight: bold;
 }
 
+nav a:hover {
+  color: #a4e57e;
+}
+
 .container {
   max-width: 900px;
   margin: 2rem auto;
-  padding: 1rem;
-  background: #fff;
+  padding: 2rem;
+  background: #2b3130;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-h2 {
-  color: #0074d9;
+form label {
+  display: block;
+  margin-top: 1rem;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #1e2524;
+  color: #eaeaea;
+}
+
+form button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: #7ac943;
+  color: #1e2524;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background: #679c3c;
+  color: white;
+}
+
+.result {
+  margin-top: 2rem;
+  background: #1e2524;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  display: none;
+  color: #7ac943;
+}
+
+h2, h1 {
+  color: #7ac943;
 }
 
 ul {
@@ -53,17 +100,24 @@ ul {
 
 .cta a {
   display: inline-block;
-  background: #0074d9;
-  color: white;
+  background: #7ac943;
+  color: #1e2524;
   padding: 0.75rem 2rem;
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cta a:hover {
+  background: #679c3c;
+  color: white;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  color: #666;
+  color: #999;
   font-size: 0.875rem;
+  background: #232928;
 }

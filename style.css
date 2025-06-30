@@ -10,78 +10,51 @@ body {
   color: #eaeaea;
 }
 
-.hero {
-  background: radial-gradient(ellipse at center, #2b3130 0%, #1e2524 100%);
-  text-align: center;
-  padding: 4rem 2rem;
-  position: relative;
-  overflow: hidden;
+.top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e2524;
+  padding: 2rem 3rem;
+  color: #eaeaea;
+  border-bottom: 1px solid #333;
 }
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 3rem 2rem;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: auto;
+.logo-left img {
+  max-width: 120px;
+  filter: drop-shadow(0 0 12px rgba(122, 201, 67, 0.6));
 }
 
-.hero-logo {
-  max-width: 260px;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 12px rgba(122, 201, 67, 0.6)) 
-          drop-shadow(0 0 6px rgba(0, 0, 0, 0.7));
-  transition: transform 0.3s ease;
+.intro-right {
+  text-align: right;
+  max-width: 70%;
 }
 
-.hero-logo:hover {
-  transform: scale(1.03);
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  margin: 0 0 1rem 0;
-  color: #7ac943;
-}
-
-.hero-tagline {
-  font-size: 1.25rem;
-  color: #ccc;
-  margin-bottom: 2rem;
-}
-
-.hero-button {
-  display: inline-block;
-  background: #7ac943;
-  color: #1e2524;
-  padding: 0.75rem 2rem;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.hero-button:hover {
-  background: #679c3c;
-  color: white;
-}
-
-header {
-  background: rgba(43, 49, 48, 0.9);
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-header img {
-  max-width: 180px;
-  margin-bottom: 1rem;
-}
-
-header h1 {
+.intro-right h1 {
+  font-size: 1.8rem;
   margin: 0;
 }
 
+.intro-right p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.quote-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #7ac943;
+  color: #1e2524;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.quote-button:hover {
+  background-color: #a4e57e;
+}
 nav {
   text-align: center;
   background: #232928;

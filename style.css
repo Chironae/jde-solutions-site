@@ -56,7 +56,6 @@ a:hover {
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
 .top-banner .quote-button:hover {
   background-color: #a4e57e;
 }
@@ -80,16 +79,18 @@ nav {
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-nav:hover .nav-icon {
+/* Only dim siblings */
+nav:hover .nav-icon:not(:hover) {
   opacity: 0.4;
 }
 
+/* Glow on hover */
 .nav-icon:hover {
   opacity: 1;
   filter: drop-shadow(0 0 8px rgba(122, 201, 67, 0.4));
 }
 
-/* Gear Background Assignments */
+/* Gear Icon Assignments */
 .nav-icon.home     { background-image: url('nav-home.png'); }
 .nav-icon.services { background-image: url('nav-services.png'); }
 .nav-icon.quotes   { background-image: url('nav-quotes.png'); }
@@ -102,13 +103,13 @@ nav:hover .nav-icon {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #101513;
+  background-color: #121815;
   border: 1px solid #1f1f1f;
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-/* === Forms === */
+/* === Form Elements === */
 form label {
   display: block;
   margin-bottom: 1rem;
@@ -131,7 +132,7 @@ form button,
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.75rem 2rem;
-  background-color: #222a26;
+  background-color: #1f261f;
   color: #eaeaea;
   border: 1px solid #444;
   border-radius: 8px;
@@ -147,17 +148,18 @@ form button:hover,
   color: #7ac943;
 }
 
+/* === Quote Result Box === */
 .result {
   display: none;
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #1a2120;
+  background-color: #121815;
   border: 1px solid #333;
   border-radius: 4px;
   color: #7ac943;
 }
 
-/* === Services List === */
+/* === Services Grid === */
 .services-list {
   list-style: none;
   padding: 0;

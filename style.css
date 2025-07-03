@@ -66,6 +66,7 @@ nav {
   justify-content: center;
   gap: 1.2rem;
   padding: 1.5rem 0 0;
+  /* background-color: #121815;  /* if you want the bar itself to sit on your slightly lighter panel */ */
 }
 
 .nav-icon {
@@ -79,12 +80,12 @@ nav {
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* Only dim siblings */
-nav:hover .nav-icon:not(:hover) {
+/* only fade siblings when an icon is hovered (no dimming when over whitespace) */
+nav:has(.nav-icon:hover) .nav-icon:not(:hover) {
   opacity: 0.4;
 }
 
-/* Glow on hover */
+/* glow on hover */
 .nav-icon:hover {
   opacity: 1;
   filter: drop-shadow(0 0 8px rgba(122, 201, 67, 0.4));

@@ -1,171 +1,147 @@
+/* === Global === */
+* {
+  box-sizing: border-box;
+}
 body {
+  margin: 0;
   font-family: sans-serif;
-  margin: 0;
-  background-color: #1e2524;
-  background-image: url('background-tile.png');
-  background-repeat: repeat;
-  background-size: 300px;
-  background-blend-mode: multiply;
-  background-position: center;
+  background-color: #0e1412;
   color: #eaeaea;
+  line-height: 1.5;
 }
-
-.top-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #1e2524;
-  padding: 2rem 3rem;
-  color: #eaeaea;
-  border-bottom: 1px solid #333;
-}
-
-.logo-left img {
-  max-width: 120px;
-  filter: drop-shadow(0 0 12px rgba(122, 201, 67, 0.6));
-}
-
-.intro-right {
-  text-align: right;
-  max-width: 70%;
-}
-
-.intro-right h1 {
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.intro-right p {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
-
-.quote-button {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #7ac943;
-  color: #1e2524;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.quote-button:hover {
-  background-color: #a4e57e;
-}
-nav {
-  text-align: center;
-  background: #232928;
-  padding: 0.5rem;
-}
-
-nav a {
-  color: #7ac943;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: #a4e57e;
-}
-
-.container {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(43, 49, 48, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-form label {
-  display: block;
-  margin-top: 1rem;
-}
-
-form input,
-form select,
-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.5rem;
-  border: 1px solid #444;
-  border-radius: 8px;
-  background: #1e2524;
-  color: #eaeaea;
-}
-
-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem 2rem;
-  background: #7ac943;
-  color: #1e2524;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-form button:hover {
-  background: #679c3c;
-  color: white;
-}
-
-.result {
-  margin-top: 2rem;
-  background: #1e2524;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #444;
-  display: none;
-  color: #7ac943;
-}
-
-h2, h1 {
-  color: #7ac943;
-}
-
-ul {
-  padding-left: 1.2rem;
-}
-
 a {
   color: #7ac943;
-  text-decoration: underline;
+  text-decoration: none;
 }
-
 a:hover {
   color: #a4e57e;
 }
 
-.cta {
-  text-align: center;
-  margin-top: 2rem;
+/* === Top Banner (homepage only) === */
+.top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a2120;
+  padding: 2rem 3rem;
+  border-bottom: 1px solid #333;
 }
-
-.cta a {
+.top-banner .logo-left img {
+  max-width: 120px;
+  filter: drop-shadow(0 0 12px rgba(122, 201, 67, 0.6));
+}
+.top-banner .intro-right {
+  text-align: right;
+  max-width: 70%;
+}
+.top-banner .intro-right h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+.top-banner .intro-right p {
+  margin: .5rem 0 1rem;
+}
+.top-banner .quote-button {
   display: inline-block;
-  background: #7ac943;
-  color: #1e2524;
-  padding: 0.75rem 2rem;
-  text-decoration: none;
-  border-radius: 8px;
+  padding: .6rem 1.2rem;
+  background-color: #7ac943;
+  color: #1e1412;
   font-weight: bold;
-  transition: background 0.3s ease;
+  border-radius: 4px;
+  transition: background-color .3s ease;
+}
+.top-banner .quote-button:hover {
+  background-color: #a4e57e;
 }
 
-.cta a:hover {
-  background: #679c3c;
-  color: white;
+/* === Navigation with gears === */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 1.5rem 0 0;
+}
+.nav-icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  opacity: 0.8;
+  transition: opacity .3s ease;
+}
+nav:hover .nav-icon { opacity: 0.4; }
+nav .nav-icon:hover { opacity: 1; }
+
+/* assign your gear-icon files here: */
+.nav-icon.home     { background-image: url('nav-home.png'); }
+.nav-icon.services { background-image: url('nav-services.png'); }
+.nav-icon.quotes   { background-image: url('nav-quotes.png'); }
+.nav-icon.about    { background-image: url('nav-about.png'); }
+.nav-icon.contact  { background-image: url('nav-contact.png'); }
+.nav-icon.jde      { background-image: url('nav-jde.png'); }
+
+/* === Page content wrapper === */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
+/* === Quote form === */
+form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+form input, form select, form textarea {
+  width: 100%;
+  padding: .5rem;
+  margin-top: .25rem;
+  border: 1px solid #444;
+  border-radius: 3px;
+  background-color: #1a2120;
+  color: #eaeaea;
+}
+form button {
+  padding: .75rem 1.2rem;
+  background-color: #7ac943;
+  color: #1e1412;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #a4e57e;
+}
+.result {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #1a2120;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+/* === Services list styling === */
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.services-list li h3 {
+  margin-top: 0;
+  color: #7ac943;
+}
+
+/* === Footer === */
 footer {
   text-align: center;
-  padding: 1rem;
-  color: #999;
-  font-size: 0.875rem;
-  background: #232928;
+  padding: 2rem 0;
+  font-size: .9rem;
+  border-top: 1px solid #333;
 }

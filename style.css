@@ -61,6 +61,7 @@ nav {
   gap: 1.2rem;
   padding: 1.5rem 0 0;
 }
+
 .nav-icon {
   display: block;
   width: 80px;
@@ -68,11 +69,21 @@ nav {
   background-size: contain;
   background-repeat: no-repeat;
   text-indent: -9999px;
-  opacity: 0.8;
-  transition: opacity .3s ease;
+  opacity: 1;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
-nav:hover .nav-icon { opacity: 0.4; }
-nav .nav-icon:hover { opacity: 1; }
+
+/* Dim all except hovered */
+nav:hover .nav-icon {
+  opacity: 0.4;
+}
+
+/* Restore full brightness and apply glow to hovered icon */
+nav .nav-icon:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(122, 201, 67, 0.4));
+}
+
 
 /* assign your gear-icon files here: */
 .nav-icon.home     { background-image: url('nav-home.png'); }

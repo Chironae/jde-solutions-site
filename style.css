@@ -1,23 +1,135 @@
-/* === Global Styles === */
-* {
-  box-sizing: border-box;
+/* === Root Theme Variables === */
+:root {
+  --bg-start: #1f262a;
+  --bg-end:   #0f1315;
+  --overlay:  rgba(28,28,30,0.85);
+  --text:     #e5e5e5;
+  --highlight:#a2a2a2;
+  --accent:   #5a5a5a;
+  --border:   #4a4a4a;
+  --font-sans: 'Segoe UI', sans-serif;
+  --font-serif:'Cinzel', serif;
+  --gear: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><circle cx="20" cy="20" r="9" stroke="%23888888" stroke-width="2"/><path d="M20 0v12M20 28v12M0 20h12M28 20h12" stroke="%23888888" stroke-width="2"/></svg>');
 }
 
-body {
+/* === Global === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: sans-serif;
-  background-color: #000000; /* match gear-icon background */
-  color: #eaeaea;
-  line-height: 1.5;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  position: relative;
+}
+
+/* === Gear Texture Background === */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--gear) repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Animated Smoke Overlay === */
+body::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 50%);
+  animation: driftSmoke 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes driftSmoke {
+  0%   { transform: translate(0,0) scale(1);     opacity:0.05; }
+  50%  { transform: translate(25%,25%) scale(1.1); opacity:0.02; }
+  100% { transform: translate(0,0) scale(1);     opacity:0.05; }
+}
+
+/* === Main Container === */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--overlay);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--highlight), inset 0 0 10px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1.5s ease-out, borderFlicker 4s infinite;
+}
+
+/* === Typography === */
+h1 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--highlight);
+  letter-spacing: 3px;
+  text-shadow: 0 0 6px var(--highlight);
+  margin-bottom: 0.25rem;
+  position: relative;
+  animation: pulse 4s ease-in-out infinite;
+}
+h1::before,
+h1::after {
+  content: '⚙';
+  position: absolute;
+  color: var(--accent);
+  font-size: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: rotate 20s linear infinite;
+}
+h1::before { left: -2rem; }
+h1::after  { right: -2rem; }
+
+h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--accent);
+  letter-spacing: 4px;
+  text-shadow: 0 0 4px var(--accent);
+  margin-bottom: 1rem;
+  animation: fadeIn 2s ease-out;
 }
 
 a {
   color: #7ac943;
   text-decoration: none;
 }
-
 a:hover {
   color: #a4e57e;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes borderFlicker {
+  0%, 100% { border-color: var(--border); }
+  50%      { border-color: var(--accent); }
+}
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 6px var(--highlight); }
+  50%      { text-shadow: 0 0 16px var(--highlight); }
+}
+@keyframes rotate {
+  0%   { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
 }
 
 /* === Top Banner (Homepage Only) === */
@@ -25,44 +137,38 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #000000; /* blend into page/nav */
+  background: transparent;
   padding: 2rem 3rem;
-  border-bottom: none;       /* remove harsh line */
+  border-bottom: none;
 }
-
 .top-banner .logo-left img {
   max-width: 120px;
   filter: drop-shadow(0 0 12px rgba(122, 201, 67, 0.6));
 }
-
 .top-banner .intro-right {
   text-align: right;
   max-width: 70%;
 }
-
 .top-banner .intro-right h1 {
+  font-size: 2rem;
   margin: 0;
-  font-size: 1.8rem;
 }
-
 .top-banner .intro-right p {
   margin: 0.5rem 0 1rem;
 }
-
 .top-banner .quote-button {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  background-color: #1f261f;             /* muted metal tone */
-  color: #eaeaea;
+  background-color: var(--accent);
+  color: var(--text);
   font-weight: bold;
-  border: 1px solid #444;
   border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid var(--highlight);
+  transition: background-color 0.3s ease;
 }
-
 .top-banner .quote-button:hover {
-  background-color: #2e3b34;             /* subtle highlight */
-  color: #7ac943;                        /* accent on hover */
+  background-color: var(--highlight);
+  color: var(--bg-end);
 }
 
 /* === Navigation with Gear Icons === */
@@ -71,8 +177,9 @@ nav {
   justify-content: center;
   gap: 1.2rem;
   padding: 1.5rem 0 0;
+  position: relative;
+  z-index: 2;
 }
-
 .nav-icon {
   display: block;
   width: 80px;
@@ -80,78 +187,57 @@ nav {
   background-size: contain;
   background-repeat: no-repeat;
   text-indent: -9999px;
+  border-radius: 50%;
   opacity: 1;
   transition: opacity 0.3s ease, filter 0.3s ease;
-
-  /* new: make the gear art sit inside a circle */
-  border-radius: 50%;
-  overflow: hidden;
 }
-
-/* only fade siblings when hovering an icon—no dimming over whitespace */
-nav:has(.nav-icon:hover) .nav-icon:not(:hover) {
-  opacity: 0.4;
-}
-
-/* glow on hover */
 .nav-icon:hover {
   opacity: 1;
   filter: drop-shadow(0 0 8px rgba(122, 201, 67, 0.4));
 }
-
+nav:hover .nav-icon:not(:hover) {
+  opacity: 0.4;
+}
 /* Gear Icon Assignments */
 .nav-icon.home     { background-image: url('nav-home.png'); }
 .nav-icon.services { background-image: url('nav-services.png'); }
 .nav-icon.quotes   { background-image: url('nav-quotes.png'); }
 .nav-icon.about    { background-image: url('nav-about.png'); }
 .nav-icon.contact  { background-image: url('nav-contact.png'); }
+.nav-icon.jde      { background-image: url('nav-jde.png'); }
 
-/* === Content Container === */
-.container {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #121815;
-  border: 1px solid #1f1f1f;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+/* === Quote Form === */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn 2s ease-out;
 }
-
-/* === Form Elements === */
 form label {
-  display: block;
-  margin-bottom: 1rem;
+  text-align: left;
 }
-
 form input,
 form select,
 form textarea {
   width: 100%;
   padding: 0.75rem;
-  margin-top: 0.25rem;
   background-color: #161c1a;
   border: 1px solid #333;
   border-radius: 4px;
-  color: #eaeaea;
+  color: var(--text);
 }
-
-form button,
-.cta a {
-  display: inline-block;
-  margin-top: 1.5rem;
+form button {
+  margin-top: 1rem;
   padding: 0.75rem 2rem;
   background-color: #1f261f;
   color: #eaeaea;
   border: 1px solid #444;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  text-decoration: none;
 }
-
-form button:hover,
-.cta a:hover {
+form button:hover {
   background-color: #2e3b34;
   color: #7ac943;
 }
@@ -176,7 +262,6 @@ form button:hover,
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
-
 .services-list li h3 {
   margin-top: 0;
   color: #7ac943;
@@ -189,4 +274,6 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #333;
   color: #999;
+  position: relative;
+  z-index: 1;
 }

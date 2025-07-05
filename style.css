@@ -171,40 +171,48 @@ a:hover {
   color: var(--bg-end);
 }
 
-/* === Navigation with Gear Icons === */
-nav {
+/* === Navigation === */
+.clean-nav {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  padding: 1.5rem 0 0;
-  position: relative;
+  gap: 2rem;
+  margin: 2rem 0 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  text-transform: uppercase;
   z-index: 2;
+  position: relative;
 }
-.nav-icon {
-  display: block;
-  width: 80px;
-  height: 80px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-  border-radius: 50%;
-  opacity: 1;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+
+.clean-nav a {
+  color: var(--highlight);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
 }
-.nav-icon:hover {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(122, 201, 67, 0.4));
+
+.clean-nav a:hover {
+  color: #7ac943;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(122, 201, 67, 0.3);
 }
-nav:hover .nav-icon:not(:hover) {
-  opacity: 0.4;
+
+.clean-nav .icon {
+  color: #7ac943;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
 }
-/* Gear Icon Assignments */
-.nav-icon.home     { background-image: url('nav-home.png'); }
-.nav-icon.services { background-image: url('nav-services.png'); }
-.nav-icon.quotes   { background-image: url('nav-quotes.png'); }
-.nav-icon.about    { background-image: url('nav-about.png'); }
-.nav-icon.contact  { background-image: url('nav-contact.png'); }
-.nav-icon.jde      { background-image: url('nav-jde.png'); }
+
+.clean-nav a:hover .icon {
+  transform: rotate(360deg);
+}
+
 
 /* === Quote Form === */
 form {

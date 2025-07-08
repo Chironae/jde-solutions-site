@@ -171,6 +171,26 @@ a:hover {
   color: var(--bg-end);
 }
 
+/* === Placeholder Text-Logo for Top Banner === */
+.top-banner .logo-left {
+  /* if you had <div class="logo-left"><div class="logo-placeholder">…</div></div> */
+  display: flex;
+  align-items: center;
+  font-family: var(--font-serif);    /* Cinzel */
+  font-size: 2.5rem;                  /* adjust to taste */
+  color: var(--text);                 /* #e5e5e5 */
+  letter-spacing: 3px;
+  text-shadow: 0 0 6px var(--highlight);
+}
+
+.top-banner .logo-left .logo-placeholder::before {
+  content: '⚙';
+  margin-right: 0.5rem;
+  color: var(--accent);               /* #5a5a5a */
+  font-size: 1.5em;
+  animation: rotate 20s linear infinite;
+}
+
 /* === Navigation === */
 .clean-nav {
   display: flex;

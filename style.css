@@ -305,3 +305,50 @@ footer {
   position: relative;
   z-index: 1;
 }
+
+/* === Site-wide Header === */
+header.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo area (use your placeholder or swap in the <img> when ready) */
+header.site-header .logo-left {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-serif);    /* Cinzel */
+  font-size: 2.5rem;                  /* tweak if needed */
+  color: var(--text);                 /* #e5e5e5 */
+  letter-spacing: 3px;
+  text-shadow: 0 0 6px var(--highlight);
+}
+header.site-header .logo-left::before {
+  content: '⚙';
+  margin-right: 0.5rem;
+  color: var(--accent);               /* #5a5a5a */
+  font-size: 1.5em;
+  animation: rotate 20s linear infinite;
+}
+
+/* Re-scope your existing nav under the header */
+header.site-header .clean-nav {
+  margin: 0;
+  gap: 2rem;
+}
+header.site-header .clean-nav a {
+  /* inherits your clean-nav link styles */
+}
+header.site-header .clean-nav .icon {
+  /* inherits your nav icon styles */
+}
+
+/* Fallback: alias old .top-banner styles to header */
+header.site-header.top-banner {
+  /* if you still have <section class="top-banner">…</section>, just add both classes */
+  /* no additional styles needed here */
+}

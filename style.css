@@ -352,3 +352,52 @@ header.site-header.top-banner {
   /* if you still have <section class="top-banner">…</section>, just add both classes */
   /* no additional styles needed here */
 }
+
+/* ===== stacked header/nav ===== */
+header.site-header {
+  display: flex;
+  flex-direction: column;       /* stack logo over nav */
+  align-items: center;          /* center everything horizontally */
+  padding: 2rem 3rem;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* logo area stays the same, will show your <img> or pseudo-⚙+text */
+header.site-header .logo-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;          /* gap between logo and nav */
+}
+
+/* remove nav icons completely */
+.clean-nav .icon {
+  display: none !important;
+}
+
+/* tighten up stacked nav */
+header.site-header .clean-nav {
+  display: flex;
+  flex-direction: column;       /* one link per line */
+  gap: 0.75rem;
+  align-items: center;
+}
+
+header.site-header .clean-nav a {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--highlight);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color 0.3s, border-color 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+header.site-header .clean-nav a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

@@ -3,115 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request a Quote – JDE Solutions LLC</title>
+  <title>Contact & Project Info – JDE Solutions LLC</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
   <meta name="theme-color" content="#222f2e" />
 </head>
 <body>
+  <!-- Site-wide Header -->
   <header class="site-header top-banner">
-  <div class="logo-left">
-    <!-- either <img src="logo.png"> or -->
-    <div class="logo-placeholder">JDE SOLUTIONS LLC</div>
-  </div>
-  <nav class="clean-nav">
-    <a href="index.html"><span class="icon">⚙</span>Home</a>
-    <a href="services.html"><span class="icon">⚙</span>Services</a>
-    <a href="quote.html"><span class="icon">⚙</span>Quotes</a>
-    <a href="about.html"><span class="icon">⚙</span>About</a>
-    <a href="contact.html"><span class="icon">⚙</span>Contact</a>
-  </nav>
-</header>
+    <div class="logo-left">
+      <div class="logo-placeholder">JDE SOLUTIONS LLC</div>
+    </div>
+    <nav class="clean-nav">
+      <a href="index.html"><span class="icon">⚙</span>Home</a>
+      <a href="services.html"><span class="icon">⚙</span>Services</a>
+      <a href="quote.html"><span class="icon">⚙</span>Contact</a>
+      <a href="about.html"><span class="icon">⚙</span>About</a>
+      <a href="contact.html"><span class="icon">⚙</span>Contact</a>
+    </nav>
+  </header>
 
-  <nav class="clean-nav">
-    <a href="index.html"><span class="icon">⚙</span> Home</a>
-    <a href="services.html"><span class="icon">⚙</span> Services</a>
-    <a href="quote.html"><span class="icon">⚙</span> Quotes</a>
-    <a href="about.html"><span class="icon">⚙</span> About</a>
-    <a href="contact.html"><span class="icon">⚙</span> Contact</a>
-  </nav>
   <div class="container">
-    <h2>Request a Quote</h2>
-    <form id="quoteForm">
-      <label>Full Name
-        <input type="text" name="name" required />
+    <h2>Get in Touch & Tell Us About Your Project</h2>
+    <p>Whether you need operational consulting, security system design, network infrastructure, or a custom business solution, fill out the form below and we'll follow up within 24 hours to discuss the next steps.</p>
+    
+    <form id="contactForm" action="mailto:jeff@jdesolutionsllc.com" method="post" enctype="text/plain">
+      <label>
+        Full Name<br>
+        <input type="text" name="name" required placeholder="Your Name">
       </label>
-      <label>Company
-        <input type="text" name="company" />
+
+      <label>
+        Email Address<br>
+        <input type="email" name="email" required placeholder="your.email@example.com">
       </label>
-      <label>Email
-        <input type="email" name="email" required />
+
+      <label>
+        Company / Organization<br>
+        <input type="text" name="company" placeholder="If applicable">
       </label>
-      <label>Service Category
-        <select name="category" id="category">
-          <option value="ops">Operational Management</option>
-          <option value="security">Security & Surveillance</option>
+
+      <label>
+        Service Interest<br>
+        <select name="category">
+          <option value="">— select a service —</option>
+          <option value="ops">Operational Management & Improvement</option>
+          <option value="security">Security & Surveillance Systems</option>
           <option value="infra">Technical Infrastructure</option>
           <option value="custombiz">Custom Business Solutions</option>
           <option value="custom">Custom Solutions</option>
         </select>
       </label>
-      <label>Estimated Hours
-        <input type="number" name="hours" id="hours" min="1" required />
+
+      <label>
+        Project Details<br>
+        <textarea name="details" rows="5" placeholder="Describe your needs, timeline, budget range, etc."></textarea>
       </label>
-      <label>Hourly Rate (USD)
-        <input type="number" name="rate" id="rate" required />
-      </label>
-      <label>Project Description
-        <textarea name="description" rows="4"></textarea>
-      </label>
-      <button type="submit">Calculate Quote</button>
+
+      <button type="submit">Send Request</button>
     </form>
-    <div class="result" id="quoteResult"></div>
+
+    <p style="margin-top:2rem; opacity:0.8; font-size:0.9rem;">
+      Or email me directly at
+      <a href="mailto:jeff@jdesolutionsllc.com">jeff@jdesolutionsllc.com</a>.
+    </p>
   </div>
 
   <footer>&copy; 2025 JDE Solutions LLC</footer>
-
-  <script>
-    const defaultRates = {
-      ops: 150,
-      security: 125,
-      infra: 135,
-      custombiz: 160,
-      custom: 145
-    };
-
-    // Set default rate
-    document.getElementById('rate').value = defaultRates.ops;
-
-    // Update rate when category changes
-    document.getElementById('category').addEventListener('change', e => {
-      document.getElementById('rate').value = defaultRates[e.target.value];
-    });
-
-    // Quote calc + mailto
-    document.getElementById('quoteForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const name = e.target.name.value;
-      const email = e.target.email.value;
-      const cat = e.target.category.value;
-      const hours = parseFloat(e.target.hours.value);
-      const rate = parseFloat(e.target.rate.value);
-      const total = (hours * rate).toFixed(2);
-      const desc = e.target.description.value;
-
-      const resultDiv = document.getElementById('quoteResult');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `
-        <p><strong>Estimated Quote:</strong><br/>
-        ${hours} hrs @ $${rate.toFixed(2)} = <strong>$${total}</strong></p>
-      `;
-
-      // open email client
-      const subject = encodeURIComponent(`Quote Request from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\n` +
-        `Company: ${e.target.company.value}\n` +
-        `Service: ${e.target.category.selectedOptions[0].text}\n` +
-        `Hours: ${hours}\nRate: $${rate}\nTotal: $${total}\n\nDescription:\n${desc}`
-      );
-      window.location.href = `mailto:jeff@jdesolutionsllc.com?subject=${subject}&body=${body}`;
-    });
-  </script>
 </body>
 </html>

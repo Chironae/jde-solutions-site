@@ -1,33 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact – JDE Solutions LLC</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
-  <meta name="theme-color" content="#222f2e" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | JDE Solutions, LLC</title>
+  <meta name="description" content="Start a fixed-scope assessment with JDE Solutions." />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-<header class="site-header top-banner">
-  <div class="logo-left">
-    <!-- either <img src="logo.png"> or -->
-    <div class="logo-placeholder">JDE SOLUTIONS LLC</div>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div>JDE Solutions, LLC</div>
+      <div class="badge">Contact</div>
+    </div>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="about.html">About</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
   </div>
-  <nav class="clean-nav">
-    <a href="index.html"><span class="icon">⚙</span>Home</a>
-    <a href="services.html"><span class="icon">⚙</span>Services</a>
-    <a href="quote.html"><span class="icon">⚙</span>Quotes</a>
-    <a href="about.html"><span class="icon">⚙</span>About</a>
-    <a href="contact.html"><span class="icon">⚙</span>Contact</a>
-  </nav>
 </header>
 
-  <div class="container">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:jeff@jdesolutionsllc.com">jeff@jdesolutionsllc.com</a></p>
-  </div>
+<main class="container">
+  <section class="hero">
+    <div class="kicker">This form is designed to filter noise.</div>
+    <h1>Start an assessment</h1>
+    <p class="lede">
+      We do not provide unpaid diagnostics or informal reviews. If you have a real problem and budget for an assessment, submit details below.
+    </p>
+  </section>
 
-  <footer>&copy; 2025 JDE Solutions LLC</footer>
+  <section class="section">
+    <div class="twocol">
+      <div class="panel">
+        <h3>Contact form</h3>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div>
+            <label for="org">Organization</label>
+            <input id="org" name="organization" type="text" required />
+          </div>
+
+          <div>
+            <label for="service">Which service best fits?</label>
+            <select id="service" name="service" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Infrastructure & Security Stabilization</option>
+              <option>Operational Automation & Reporting Cleanup</option>
+              <option>Legacy System Triage & Modernization Planning</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="problem">What problem are you trying to solve?</label>
+            <textarea id="problem" name="problem" required></textarea>
+          </div>
+
+          <div>
+            <label for="symptoms">What feels broken, risky, or manual today?</label>
+            <textarea id="symptoms" name="symptoms" required></textarea>
+          </div>
+
+          <div>
+            <label for="budget">Do you have budget allocated for assessment work?</label>
+            <select id="budget" name="budget" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Not yet, but we can allocate</option>
+            </select>
+          </div>
+
+          <button class="btn primary" type="submit">Submit</button>
+          <div class="small">You should receive a reply within 2 business days if this fits our engagement model.</div>
+        </form>
+
+        <div class="note" style="margin-top:12px;">
+          Formspree setup: create a form, copy the endpoint, replace YOUR_FORM_ID above, then push.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Fixed fees</h3>
+        <p><strong>Infrastructure & Security Stabilization:</strong> $4,500</p>
+        <p><strong>Automation & Reporting Cleanup:</strong> $7,500</p>
+        <p><strong>Legacy Triage & Modernization Planning:</strong> $12,000</p>
+
+        <div class="callout">
+          <strong>Boundary:</strong> If you want a “quick look,” that is an assessment.
+        </div>
+
+        <p class="small">
+          If your team is in crisis mode or needs immediate triage, mention it in the problem description. Otherwise, we operate on a structured assessment timeline.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © <span id="y"></span> JDE Solutions, LLC. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
